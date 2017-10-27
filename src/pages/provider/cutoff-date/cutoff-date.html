@@ -1,0 +1,29 @@
+<ion-header>
+    <ion-navbar color="red">
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title *ngIf="!showSearchBar" class="tracking-in-expand">Contratos</ion-title>
+        <ion-searchbar [(ngModel)]="search" placeholder="Buscar" *ngIf="showSearchBar" class="search-input" animated="true" autocomplete="on" autocorrect="on">
+        </ion-searchbar>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+    <ion-card>
+        <img src="http://contenidos.enter.co/custom/uploads/2015/10/pagos_1024.jpg" />
+        <div class="card-title">Tus cuentas claras</div>
+        <div class="card-subtitle">Recaudado mes anterior: {{before_payment | currency:'USD':true:'1.0-2'}}</div>
+    </ion-card>
+    <ion-card>
+        <ion-list *ngIf="contracts != undefined">
+            <ion-item (click)="goToDetail(contract.contrato_id)" *ngFor="let contract of contracts">
+                <ion-icon name="clipboard" item-left large></ion-icon>
+                <h2>Contrato #{{contract.contrato_id}}</h2>
+                <p>{{contract.tipo_contrato}}</p>
+                <p>Sueldo: {{contract.sueldo | currency:'USD':true:'1.0-2'}}</p>
+                <p>{{contract.fecha_inicio | date: 'dd/MM/yyyy'}} hasta {{contract.fecha_final | date: 'dd/MM/yyyy'}}</p>
+                <!--<ion-icon name="eye" item-right medium></ion-icon>-->
+            </ion-item>
+        </ion-list>
+    </ion-card>
+</ion-content>

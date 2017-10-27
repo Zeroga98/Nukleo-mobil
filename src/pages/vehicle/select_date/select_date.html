@@ -1,0 +1,30 @@
+<div class="content-modal">
+    <p class="title">Selecciona la fecha para ver autos disponibles</p>
+   <div class="content">
+   <div class="picker">
+        <div class="date-time">
+            <p class="day">21</p>           
+              <ion-datetime displayFormat="MMM DDD" monthShortNames='Ene, Feb, Mar, Abr, May, Jun, Jul, Ago, Sep, Oct, Nov, Dic' dayShortNames='Lun, Mar, Mier, jue ,vier, Sab, Dom' [(ngModel)]="event.month"><p class="day">21</p>   </ion-datetime>
+        </div>
+        <div class="date-hour">
+            <span>Hasta</span>
+        </div>
+    </div>
+    <div class="arrow-rigth">
+    <ion-icon name="arrow-round-forward"></ion-icon>
+    </div>
+       <div class="picker">
+        <div class="date-time">
+            <p class="day">21</p>           
+              <ion-datetime displayFormat="MMM DDD" monthShortNames='Ene, Feb, Mar, Abr, May, Jun, Jul, Ago, Sep, Oct, Nov, Dic' dayShortNames='Lun, Mar, Mier, jue ,vier, Sab, Dom' [(ngModel)]="event.month"><p class="day">21</p>   </ion-datetime>
+        </div>
+        <div class="date-hour">
+            <span>Hasta</span>
+        </div>
+    </div>
+
+   </div>
+    
+    <button ion-button (click)="dismiss()" color="danger">Cancelar</button>
+    <button ion-button>Aceptar</button>
+</div>

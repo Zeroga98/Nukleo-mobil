@@ -1,0 +1,110 @@
+    page-favorite {
+        .favorite {
+            top: 8px;
+            right: 16px;
+        }
+        .fab{
+        width: 30px;
+        height: 30px;
+         }
+        .content_back {
+            background-color: #e9edf1;
+        }
+        /*------------------------------------*\
+    $MY-RESERVE
+\*------------------------------------*/
+        .my-reserve {
+            background-color: #fff;
+            padding: 10px;
+            margin: 0 0 13px 0;
+            .my-reserve__header {
+                border-bottom: 1px solid #e9edf1;
+                height: 50px;
+                position: relative;
+                .text {
+                    padding-top: 17px;
+                    .name {
+                        font-size: 15px;
+                        font-weight: 500;
+                    }
+                    .model {
+                        font-size: 13px;
+                        color: #2b2b2b;
+                    }
+                }
+            }
+            .state {
+                /* float: right; */
+                position: absolute;
+                right: 0px;
+                transform: translateY(-50%);
+                top: 50%;
+                background-color: #eaf9ef;
+                padding: 10px;
+                color: #55cf7d;
+                font-weight: 500;
+                border-right: 4px solid #55cf7d;
+            }
+            .my-reserve__content {
+                text-align: center;
+                .title {
+                    font-size: 18px;
+                }
+                .img {
+                    vertical-align: middle;
+                    display: inline-block;
+                    width: 48%;
+                    img {
+                        border-radius: 10px;
+                    }
+                }
+                .detail {
+                    display: inline-block;
+                    width: 48%;
+                    vertical-align: middle;
+                    text-align: center;
+                    .detail__title {
+                        .subtitle {
+                            display: block;
+                            font-size: 13px
+                        }
+                    }
+                    ion-item {
+                        font-size: 10px;
+                        ion-icon {
+                            font-size: 18px;
+                            margin: 0;
+                            padding: 0;
+                        }
+                        p {
+                            font-size: 10px;
+                        }
+                        .item-inner {
+                            margin: 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+/*------------------------------------*\
+    $LOGO-LOGIN
+\*------------------------------------*/
+  .logo-login {
+        background-color: transparent;
+        width: 95%;
+        margin: 0 auto;
+        text-align: center;
+        & h2 {
+            color: white;
+            font-size: 2em;
+            margin-top: -25%;
+        }
+        & img {
+            opacity: .7;
+            filter: inherit;
+        }
+        & * {
+            border: none!important;
+        }
+    }

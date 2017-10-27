@@ -1,0 +1,27 @@
+<ion-card class="card-md--mrgnone">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7poy6Q3zgjZzNTkuVfznkxsHByAr09nBkpuK1pgWfU80iqrY7sw" />
+    <div class="card-title">IoT</div>
+    <div class="card-subtitle">TUs dispositivos</div>
+
+    <div class="card-footer">
+        <button *ngIf="!isAuthenticated" class="btn--bder-rigth wdth-47 btn--rad0 " (click)="Login()" menuClose ion-button color="light" clear>Iniciar sesión
+        </button>
+
+        <button *ngIf="!isAuthenticated" class="wdth-47 btn--rad0" (click)="SignUp()" menuClose ion-button color="light" clear>Crea una cuenta
+        </button>
+        <ion-item *ngIf="isAuthenticated">
+            <ion-avatar item-left>
+                <!--<img [src]="currentUser?.image"/>-->
+                <img src="http://visualoop.com/wp-content/themes/visualoop/img/there-is-no-picture-for-this-user2.png" />
+            </ion-avatar>
+            <h2 class="title">{{currentUser?.name}}</h2>
+            <p class="subtitle">{{currentUser?.email}}</p>
+        <button item-right *ngIf="isAuthenticated" class="wdth-47 btn--rad0" (click)="Logout()" menuClose ion-button icon-only clear >
+      <ion-icon  name="log-out" color="light"></ion-icon>
+        </button>
+        </ion-item>
+
+       
+    </div>
+
+</ion-card>

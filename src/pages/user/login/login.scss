@@ -1,0 +1,87 @@
+page-login {
+    .bkg-login {
+        background: linear-gradient(-45deg, rgba(0, 0, 0, 0.8), rgba(68, 62, 93, 0.6)), url(./../../../assets/img/Driving.png) no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        background-position: 0 center;
+    }
+    .btn-login {
+        text-transform: inherit;
+        width: 80%;
+        border-radius: 0;
+    }
+    .top-10pc {
+        margin-top: 5%;
+    }
+    .text-center {
+        text-align: center;
+    }
+    .logo-login {
+        background-color: transparent;
+        width: 95%;
+        margin: 0 auto;
+        text-align: center;
+        & h2 {
+            color: white;
+            font-size: 2em;
+            margin-top: -25%;
+        }
+        & img {
+            opacity: .7;
+            filter: inherit;
+        }
+        & * {
+            border: none!important;
+        }
+    }
+    .link-a {
+        text-decoration: none;
+        color: whitesmoke;
+    }
+    .item-login {
+        color: whitesmoke;
+        margin: 1px 0;
+        & input::-webkit-input-placeholder {
+            color: whitesmoke;
+        }
+    }
+    .top-1em {
+        margin-top: -1em;
+    }
+    .top-3em {
+        margin-top: -3em;
+    }
+    .font-13em {
+        font-size: 1.3em;
+    }
+    .line-text {
+        display: table;
+        white-space: nowrap;
+        width: 100%;
+        top: 1em;
+        font-size: 1.3em;
+        color: whitesmoke;
+        &:before,
+        &:after {
+            border-top: 1px solid white;
+            content: '';
+            display: table-cell;
+            position: relative;
+            top: 0.5em;
+            width: 38%;
+        }
+        &:before {
+            right: .5%;
+            left: 5%;
+        }
+        &:after {
+            left: -5%;
+            right: 5%
+        }
+    }
+    .login-align--right {
+        text-align: right;
+    }
+}

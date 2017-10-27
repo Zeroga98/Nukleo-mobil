@@ -1,0 +1,84 @@
+<ion-header>
+    <ion-navbar color="red">
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title class="tracking-in-expand">Reserva</ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+    <ion-card *ngIf="reserve != unfedined">
+        <ion-item class="header-card">
+            <h2>{{reserve.modelo}}</h2>
+            <p> {{reserve.auto_nombre}}</p>
+            <!--<ion-icon name="alert" color="orange" item-right></ion-icon>-->
+            <!--rejected-->
+            <ion-note item-right [ngClass]="{'active': (reserve.estado == 'Confirmado' || reserve.estado == 'Proceso'), 'pending': reserve.estado == 'Pendiente' }">
+                {{reserve.estado}}
+            </ion-note>
+            <ion-note item-right class="active" hidden="true">
+                Aceptada
+            </ion-note>
+            <ion-note item-right class="pending" hidden="true">
+                Pendiente
+            </ion-note>
+        </ion-item>
+        <ion-item class="contain-img">
+            <img class="car-img" src="{{reserve.foto}}">
+            <ion-item class="item-user">
+                <ion-avatar item-left>
+                    <img src="{{reserve.usuario_foto}}">
+                </ion-avatar>
+                <h2>{{reserve.usuario_nombres}} {{reserve.usuario_apellidos}}</h2>
+                <p>Reservado el {{reserve.fecha_solicitado | date: 'dd/MM/yyyy'}}
+                    <p>
+            </ion-item>
+        </ion-item>
+        <ion-card-content>
+            <ion-item class="item-date">
+                <ion-list-header>
+                    Entrega en
+                </ion-list-header>
+                <ion-list>
+                    <ion-item>
+                        <ion-icon name="pin" item-left></ion-icon>
+                        <h2>{{reserve.sucursal}}</h2>
+                        <h3>{{reserve.sucursal_municipio}}</h3>
+                        <p>Desde el {{reserve.fecha_inicia_proceso | date: 'dd/MM/yyyy' }}</p>
+                        <p>Hasta el {{reserve.fecha_final_proceso | date: 'dd/MM/yyyy' }}</p>
+                    </ion-item>
+                </ion-list>
+            </ion-item>
+            <!--<ion-item class="item-date">
+                <ion-list-header>
+                    Descuentos
+                    <ion-icon name="add-circle" item-right></ion-icon>
+                </ion-list-header>
+                <ion-list>
+                    <ion-item>
+                        <h2>Por que está buena</h2>
+                        <ion-note item-right>
+                            80%
+                        </ion-note>
+                    </ion-item>
+                </ion-list>
+            </ion-item>-->
+            <br>
+            <ion-item class="item-pay">
+                <p item-left>
+                    Total: {{reserve.precio_dia | currency:'USD':true:'1.0-2'}}
+                </p>
+                <ion-icon name="paper" item-right></ion-icon>
+            </ion-item>
+        </ion-card-content>
+        <ion-list *ngIf="reserve.conductor_nombres != undefined">
+            <ion-item>
+                <ion-avatar item-left>
+                    <img src="{{reserve.conductor_foto}}">
+                </ion-avatar>
+                <h2>{{reserve.conductor_nombres}} {{reserve.conductor_apellidos}}</h2>
+                <p>Conductor</p>
+            </ion-item>
+        </ion-list>
+    </ion-card>
+</ion-content>

@@ -1,0 +1,26 @@
+page-own-cars {
+    ion-content {
+        margin-top: 56px;
+    }
+    .own-car-card {
+        img {
+            display: inline-block;
+            width: 50%;
+            height: 100px;
+        }
+        div {
+            margin-top: 1em;
+            margin-left: 1em;
+            vertical-align: top;
+            display: inline-block;
+            h2 {
+                display: inline-block;
+                font-size: 1.2em;
+                font-weight: bold;
+            }
+            p {
+                margin: 0;
+            }
+        }
+    }
+}

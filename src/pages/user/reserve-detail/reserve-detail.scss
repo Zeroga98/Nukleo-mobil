@@ -1,0 +1,71 @@
+reserve-detail {
+    .header-card {
+        border-bottom: solid 1px lightgray;
+        h2 {
+            font-weight: 700;
+        }
+        ion-note {
+            padding: 1em;
+            width: 8em;
+            font-weight: 700;
+        }
+        .rejected {
+            background-color: salmon;
+            color: crimson;
+            border-right: solid 3px crimson;
+        }
+        .active {
+            background-color: lightgreen;
+            color: green;
+            border-right: solid 3px green;
+        }
+        .pending {
+            background-color: lightgoldenrodyellow;
+            color: orange;
+            border-right: solid 3px orange;
+        }
+    }
+    .contain-img {
+        .car-img {
+            width: 100%;
+            height: 100%;
+        }
+        .item-user {
+            position: absolute;
+            width: 90%;
+            bottom: 1em;
+            h2 {
+                color: whitesmoke;
+                font-weight: 700;
+            }
+            p {
+                color: whitesmoke;
+            }
+        }
+        .item-md {
+            background-color: rgba(0, 0, 0, 0.5);
+            border: none;
+        }
+    }
+    .item-date {
+        ion-list-header {
+            margin: 0;
+        }
+        .label-md {
+            margin: 0;
+        }
+    }
+    .card-content-md {
+        padding: 0;
+    }
+    .item-pay {
+        background-color: green;
+        color: whitesmoke;
+        p {
+            padding: .5em;
+            border: solid 1px white;
+            font-weight: 700;
+            color: whitesmoke;
+        }
+    }
+}

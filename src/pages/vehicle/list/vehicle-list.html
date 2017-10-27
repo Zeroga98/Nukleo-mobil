@@ -1,0 +1,41 @@
+<ion-header>
+    <ion-navbar color="#002bff">
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title class="tracking-in-expand">Mis dispositivos</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Delice para actualizar" refreshingSpinner="circles" refreshingText="Cargando..."></ion-refresher-content>
+    </ion-refresher>
+    <ion-list >
+        <ion-list-header>
+            Todos
+        </ion-list-header>
+        <ion-item *ngFor="let vehicle of vehicles" >
+            <ion-thumbnail item-left>
+                <img src={{vehicle.image}}>
+            </ion-thumbnail>
+            <h2>{{vehicle.model}}</h2>
+            <p>{{vehicle.name}}</p>
+            <button ion-button clear item-right  (click)="goToDetail(vehicle)">Ver</button>
+        </ion-item>
+          <ion-item>
+            <ion-thumbnail item-left>
+                <img src="http://fundacionmasqueideas.org/wp-content/uploads/2014/03/logo-cruz-portada-fundacionMQI.png">
+            </ion-thumbnail>
+            <h2>Agregar mas</h2>
+            
+            <button ion-button clear item-right  (click)="presentPrompt()">Ver</button>
+        </ion-item>
+    </ion-list>
+
+    <not-data [hidden]="not_data"></not-data>
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+        <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+
+</ion-content>

@@ -1,0 +1,168 @@
+page-reserve-list {
+
+	ion-card.cards-list-demo ion-item-divider {
+        color: map-get($colors, primary);
+    }
+
+    .active-tab {
+        border-bottom: 2px solid white;
+    }
+
+    .align-right {
+        text-align: right;
+    }
+
+    .scroll-content {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 1;
+        display: block;
+        overflow-x: hidden;
+        overflow-y: scroll;
+        -webkit-overflow-scrolling: touch;
+        will-change: scroll-position;
+        contain: size style layout;
+        
+    }
+
+    .pagemainclass {
+        .slide-zoom {
+            position: absolute;
+            top: 0;
+            left: 0;
+            overflow-y: scroll;
+            overflow-x: hidden;
+        }
+        .swiper-wrapper {
+            height: 95%;
+        }
+    }
+
+    .tabs {
+        position: absolute;
+        height: 4em;
+        bottom: 0;
+        width: 100%;
+        background-color: map-get($colors, secondary);
+        & .tab-button-temp {
+            display: inline-block;
+            width: 50%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        & .tab-button-right {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            width: 49%;
+        }
+    }
+    
+    .content_back {
+        background-color: #e9edf1;
+    }
+/*------------------------------------*\
+    $MY-RESERVE
+\*------------------------------------*/
+    .my-reserve {
+        background-color: #fff;
+        padding: 10px;
+        margin: 0 0 10px 0;
+        .my-reserve__header {
+            border-bottom: 1px solid #e9edf1;
+            height: 50px;
+            position: relative;
+            .text {
+                padding-top: 17px;
+                .name {
+                    font-size: 15px;
+                    font-weight: 500;
+                }
+                .model {
+                    font-size: 13px;
+                    color: #2b2b2b;
+                }
+            }
+        }
+        .active {
+            /* float: right; */
+            position: absolute;
+            right: 0px;
+            transform: translateY(-50%);
+            top: 50%;
+            background-color: #eaf9ef;
+            padding: 10px;
+            color: #55cf7d;
+            font-weight: 500;
+            border-right: 4px solid #55cf7d;
+        }
+
+        .rejected {
+            position: absolute;
+            right: 0px;
+            transform: translateY(-50%);
+            top: 50%;
+            background-color: salmon;
+            padding: 10px;
+            color: crimson;
+            font-weight: 500;
+            border-right: 4px solid crimson;
+        }
+
+        .pending {
+            position: absolute;
+            right: 0px;
+            transform: translateY(-50%);
+            top: 50%;
+            background-color: lightgoldenrodyellow;
+            padding: 10px;
+            color: orange;
+            font-weight: 500;
+            border-right: 4px solid orange;
+        }
+        .my-reserve__content {
+            text-align: center;
+            .title {
+                font-size: 18px;
+            }
+            .img {
+                vertical-align: middle;
+                display: inline-block;
+                width: 48%;
+                img{
+                    border-radius: 10px;
+                }
+            }
+            .detail {
+                display: inline-block;
+                width: 48%;
+                vertical-align: middle;
+                text-align: center;
+                .detail__title {
+                    .subtitle {
+                        display: block;
+                        font-size: 13px
+                    }
+                }
+                ion-item{
+                    font-size: 10px;
+                    ion-icon{
+                        font-size: 18px;
+                        margin: 0;
+                        padding: 0;
+                    }
+                    p{
+                        font-size:10px;
+                    }
+                    .item-inner{
+                        margin: 0;
+                    }
+                }
+            }
+        }
+    }
+}

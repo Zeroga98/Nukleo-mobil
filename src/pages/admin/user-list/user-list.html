@@ -1,0 +1,45 @@
+<ion-header>
+    <ion-navbar color="red">
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title *ngIf="!showSearchBar" class="tracking-in-expand">Usuarios</ion-title>
+        <ion-searchbar [(ngModel)]="search" placeholder="Buscar" *ngIf="showSearchBar" class="search-input" animated="true" autocomplete="on" autocorrect="on">
+        </ion-searchbar>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+    <ion-list>
+        <ion-item>
+            <ion-label>Filtrando por </ion-label>
+            <ion-select cancelText="Cancelar" okText="Aceptar" (ionChange)="onInput($event)">
+                <ion-option value="all" selected>Todos</ion-option>
+                <ion-option *ngFor="let rol of rols" value="{{rol.nombre}}">{{rol.nombre}}</ion-option>
+            </ion-select>
+        </ion-item>
+        <section *ngIf="users">
+            <ion-card *ngFor="let user of users">
+                <div class="state-user">
+                    <ion-note *ngIf="user.estado == 0" (click)="changeStateUser(user)">
+                        Habilitar
+                        <ion-icon name="radio-button-off"></ion-icon>
+                    </ion-note>
+                    <ion-note *ngIf="user.estado == 1" (click)="changeStateUser(user)" class="user-active">
+                        Inhabilitar
+                        <ion-icon name="radio-button-on"></ion-icon>
+                    </ion-note>
+                </div>
+                <ion-item>
+                    <ion-avatar item-left>
+                        <img src="{{user.foto}}">
+                    </ion-avatar>
+                    <h2>{{user.nombres}} {{user.apellidos}}</h2>
+                    <p (click)="SelectedRol(user)">
+                        <span *ngFor="let rol of user.rols; let last = last">{{rol}}<span [hidden]="last">, </span></span>
+                        <ion-icon name="arrow-dropdown" class="align-middle"></ion-icon>
+                    </p>
+                </ion-item>
+            </ion-card>
+        </section>
+    </ion-list>
+</ion-content>

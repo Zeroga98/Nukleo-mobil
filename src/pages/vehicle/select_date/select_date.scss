@@ -1,0 +1,73 @@
+page-selectDate {
+    .content-modal {
+        background-color: #fff;
+        border-radius: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        position: relative;
+        padding: 19px;
+        margin: 0 auto;
+        border: 1px solid rgba(212, 205, 205, 0.58);
+        text-align: center;
+        .title {
+            margin-bottom: 20px;
+        }
+        .item-cover {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .content {
+        margin: 0 auto 14px auto;
+    }
+    .picker {
+        display: inline-block;
+        width: 40%;
+        border: 1px solid rgba(212, 205, 205, 0.58);
+        border-radius: 15px;
+        text-align: center;
+        margin-left: 5px;
+        .day {
+            font-size: 28px;
+            font-weight: 600;
+            margin: 5px 0 2px 0;
+        }
+        .day-name {
+            margin: 0 0 5px 0;
+        }
+        .date {
+            margin: 0 0 10px 0;
+        }
+        .date-time {
+            position: relative;
+            border-bottom: 1px solid rgba(212, 205, 205, 0.58);
+            padding: 10px 0 10px 0;
+        }
+        .date-hour {
+            padding: 15px 0 15px 0;
+        }
+    }
+    .arrow-rigth {
+        border-radius: 50%;
+        background-color: #387ef5;
+        display: inline-block;
+        padding: 9px;
+        position: absolute;
+        color: #fff;
+        top: calc(50% - (45px/2));
+        left: calc(50% - (30px/2));
+    }
+}
+
+.modal-wrapper {
+    position: absolute;
+    top: calc(50% - (300px/2));
+    left: calc(50% - (90%/2));
+    width: 90%;
+    height: 300px;
+}
+
+ion-backdrop {
+    visibility: inherit!important;
+}

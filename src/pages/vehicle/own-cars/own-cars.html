@@ -1,0 +1,14 @@
+<header [title]="title"></header>
+<ion-content>
+    <div [hidden]="(vehicles == undefined || vehicles.length == 0)" *ngFor="let vehicle of vehicles">
+        <ion-card class="own-car-card">
+            <img src="{{vehicle.foto_url}}" alt="">
+            <div>
+                <h2>{{vehicle.modelo}}</h2> | <span>{{vehicle.auto_nombre}}</span>
+                <p>Contrato #: {{vehicle.contrato_id}}</p>
+                <p>{{(vehicle.estado == 3)? 'Alquilado': 'Disponible'}}</p>
+            </div>
+        </ion-card>
+    </div>
+    <not-data [hidden]="vehicles == undefined || vehicles.length > 0"></not-data>
+</ion-content>

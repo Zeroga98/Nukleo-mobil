@@ -1,0 +1,57 @@
+<ion-header>
+    <ion-navbar color="red">
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title *ngIf="!showSearchBar" class="tracking-in-expand">Registro de vehículos</ion-title>
+        <ion-searchbar [(ngModel)]="search" placeholder="Buscar" *ngIf="showSearchBar" class="search-input" animated="true" autocomplete="on" autocorrect="on">
+        </ion-searchbar>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <div class="header-msg">
+        <h4>Invita nuevos usuarios a la familia Road</h4>
+        <p>Recuerda dar todas las indicaciones a los nuevos usuarios</p>
+    </div>
+    <form class="top-5px">
+        <ion-row>
+            <ion-col>
+                <ion-list inset>
+                    <ion-item>
+                        <ion-label floating>Nombres</ion-label>
+                        <ion-input type="text"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label floating>Apellidos</ion-label>
+                        <ion-input type="text"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label floating>Contraseña</ion-label>
+                        <ion-input type="password"></ion-input>
+                    </ion-item>
+                    <ion-item class="select">
+                        <ion-label>Rol a desempeñar</ion-label>
+                        <ion-select cancelText="Cancelar" okText="Aceptar">
+                            <ion-option value="employee">Empleado</ion-option>
+                            <ion-option value="user">Cliente</ion-option>
+                            <ion-option value="provider">Proveedor</ion-option>
+                        </ion-select>
+                    </ion-item>
+                    <ion-item class="select">
+                        <ion-label>Sucursal</ion-label>
+                        <ion-select cancelText="Cancelar" okText="">
+                            <ion-option value="fl">Florencia</ion-option>
+                            <ion-option value="ne">Neiva</ion-option>
+                        </ion-select>
+                    </ion-item>
+                </ion-list>
+            </ion-col>
+        </ion-row>
+        <ion-row class="abs-btn">
+            <ion-col>
+                <button ion-button color="red" full type="submit">Agregar usuario</button>
+            </ion-col>
+        </ion-row>
+    </form>
+</ion-content>

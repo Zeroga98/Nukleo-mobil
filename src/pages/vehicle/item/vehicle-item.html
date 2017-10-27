@@ -1,0 +1,35 @@
+<ion-card>
+
+  <img src={{foto_url}}>
+  <div class="vehicle-item__title">
+    <h2 class="title">{{modelo}} {{auto_nombre}}</h2>
+    <span class="subtitle">{{puertas}} puertas | {{puestos}} puestos</span>
+  </div>
+  <ion-fab class="favorite">
+    <button ion-fab (click)="addVehicleFavorites()">
+      <ion-icon [hidden]="favorito!=null" name="star-outline"  ></ion-icon>
+      <ion-icon  [hidden]="favorito==null" name="star"  ></ion-icon>
+    </button>
+  </ion-fab>
+
+  <ion-item>
+    <ion-icon name="pin" item-left large></ion-icon>
+    <h2>{{sucursal}}</h2>
+    <p>{{sucursal_municipio}}</p>
+  </ion-item>
+
+  <ion-item>
+    <ion-icon name="speedometer" item-left large ></ion-icon>
+    <h2>Combustible: {{tipo_combustible}}</h2>
+    <p>Transmición: {{tipo_transmicion}}</p>
+  </ion-item>
+
+  <ion-item>
+    <span item-left>CO${{precio_dia}}</span>    
+    <button ion-button icon-left clear item-right (click)="goToDetail()">
+      <ion-icon name="navigate"></ion-icon>
+      Más
+    </button>
+  </ion-item>
+
+</ion-card>

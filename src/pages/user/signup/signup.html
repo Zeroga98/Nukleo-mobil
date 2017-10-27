@@ -1,0 +1,41 @@
+<ion-header>
+    <ion-navbar color="transparent">
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title class="signup-align--right">Registro</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="signup-bkg" padding>
+    <ion-row style="margin-top: -35px;">
+        <ion-col>
+            <ion-item class="signup-logo">
+                <img src="assets/img/logo.svg" />
+                <h2>Road</h2>
+            </ion-item>
+        </ion-col>
+    </ion-row>
+    <form (ngSubmit)="signUp()" #registerForm="ngForm">
+        <ion-row>
+            <ion-col>
+                <ion-list inset>
+                    <ion-item color="transparent" class="signup-item">
+                        <ion-input type="text" placeholder="Nombres" name="name" [(ngModel)]="User.username" required></ion-input>
+                    </ion-item>
+                    <ion-item color="transparent" class="signup-item">
+                        <ion-input type="text" placeholder="Email" name="email" [(ngModel)]="User.email" required></ion-input>
+                    </ion-item>
+                    <ion-item color="transparent" class="signup-item">
+                        <ion-input type="password" placeholder="Contraseña" name="password" [(ngModel)]="User.password" required></ion-input>
+                    </ion-item>
+                </ion-list>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <button ion-button color="red" class="submit-btn" full type="submit" [disabled]="!registerForm.form.valid">Bienvenido</button>
+            </ion-col>
+        </ion-row>
+    </form>
+</ion-content>

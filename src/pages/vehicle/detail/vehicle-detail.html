@@ -1,0 +1,95 @@
+<ion-header>
+    <ion-navbar color="red">
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title *ngIf="!showSearchBar" class="tracking-in-expand">Información</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <!-- <ion-card>
+        <div class="vehicle-item__title">
+            <h2>{{vehicle.modelo}} {{vehicle.auto_nombre}} | <span class="bold"> {{vehicle.marca_nombre}} </span></h2>
+            <span class="subtitle">{{vehicle.puertas}} puertas | {{vehicle.puestos}} puestos</span>
+        </div>
+        <ion-slides>
+            <ion-slide>
+                <img src={{vehicle.foto_url}}>
+            </ion-slide>
+            <ion-slide *ngFor="let photos of vehicle.photos">
+                <img src={{photos}}>
+            </ion-slide>
+        </ion-slides>
+        <ion-fab class="favorite">
+            <button ion-fab (click)="favorite()">
+      <ion-icon [hidden]="favorito==1" name="star-outline"  ></ion-icon>
+      <ion-icon  [hidden]="favorito!=1" name="star"  ></ion-icon>
+    </button>
+        </ion-fab>
+        <ion-item>
+            <h2 class="description">{{vehicle.descripcion}}</h2>
+        </ion-item>
+        <ion-item>
+            <p class="">Ubicado en {{vehicle.sucursal}}, {{vehicle.sucursal_municipio}} {{vehicle.sucursal_departamento}}</p>
+        </ion-item>
+        <ion-item>
+            <ion-grid>
+                <ion-row>
+                    <ion-col *ngFor="let acce of vehicle.accessories">
+                        <ion-icon name="{{acce.icon}}" item-left large></ion-icon>
+                        {{acce.name}}
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-item>
+        <ion-item *ngIf="status==undefined? false: true" [color]="status ? 'secondary' : 'danger'">
+            <span item-left class="bold">CO$ {{vehicle.precio_dia}} <span class="price-description">por día</span> </span>
+            <button ion-button icon-right item item-right clear color="light" (click)="goToReserve(vehicle)">
+                <span *ngIf="status" >Reservar</span>  
+                <span *ngIf="!status" >Ya lo reservaste</span>  
+                <ion-icon *ngIf="status" name="arrow-forward"></ion-icon>
+            </button>
+        </ion-item>
+
+    </ion-card>
+    <ion-card>
+        <div class="vehicle-item__title">
+            <h2 class="title">Características del coche</h2>
+        </div>
+        <ion-list>
+            <ion-item>
+                <ion-icon name="cog" item-left></ion-icon>
+                <span class="bold">Transmisión:</span><span class="align-right">{{vehicle.tipo_transmicion}}</span>
+            </ion-item>
+            <ion-item>
+                <ion-icon name="compass" item-left></ion-icon>
+                <span class="bold">Dirección:</span> <span class="align-right">{{vehicle.tipo_direccion}}</span>
+            </ion-item>
+            <ion-item>
+                <ion-icon name="speedometer" item-left></ion-icon>
+                <span class="bold">Combustible:</span> <span class="align-right">{{vehicle.tipo_combustible}}</span>
+            </ion-item>
+            <ion-item>
+                <ion-icon name="logo-usd" item-left></ion-icon>
+                <span class="bold">Aseguradora:</span> <span class="align-right">{{vehicle.empresa_aseguradora}}</span>
+            </ion-item>
+        </ion-list>
+    </ion-card>-->
+    <div  *ngIf="public!==undefined">
+        <ion-list >
+            <ion-list-header>
+                {{public.model_version}}
+                <p>firmware:{{public.firmware_version}}</p>
+                <p>id dispositivo: {{public.id_device}}</p>
+            </ion-list-header>
+
+            <ion-item *ngFor="let public of public.actions ; let i = index" [attr.data-index]="i">
+                <ion-label>Accion: {{public.action_name}}</ion-label>                
+                <button  ion-button clear item-right (click)="relay1PowerOnModel(public.action_name)" >ejecutar</button>
+            </ion-item>
+        </ion-list>
+        
+    </div>
+
+</ion-content>

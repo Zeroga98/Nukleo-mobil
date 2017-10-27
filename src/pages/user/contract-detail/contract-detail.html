@@ -1,0 +1,42 @@
+<ion-header>
+    <ion-navbar color="red">
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title *ngIf="!showSearchBar" class="tracking-in-expand">Finanzas</ion-title>
+        <ion-searchbar [(ngModel)]="search" placeholder="Buscar" *ngIf="showSearchBar" class="search-input" animated="true" autocomplete="on" autocorrect="on">
+        </ion-searchbar>
+    </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+    <ion-list>
+        <!--<ion-item class="contract-select">
+            <ion-label>Contrato</ion-label>
+            <ion-select [(ngModel)]="Contratos" multiple="true" cancelText="Cancelar" okText="Ok!">
+                <ion-option value="1" selected="true">#1</ion-option>
+                <ion-option value="2">#2</ion-option>
+                <ion-option value="3">#3</ion-option>
+                <ion-option value="4">#4</ion-option>
+                <ion-option value="5">#5</ion-option>
+            </ion-select>
+        </ion-item>-->
+        <ion-list *ngIf="payment != undefined && payment.length > 0">
+            <ion-list-header>
+                Movimientos
+            </ion-list-header>
+            <ion-item>
+                <ion-icon name="cash" item-left></ion-icon>
+                <h2>Próximo pago</h2>
+                <span item-right>{{payment[0].proximo_pago | currency:'USD':true:'1.0-2' }}</span>
+            </ion-item>
+            <ion-item *ngFor="let pay of payment" [hidden]="pay.pago == null">
+                <ion-icon name="cash" item-left></ion-icon>
+                <h2>Pago mensual</h2>
+                <p>{{pay.fecha_registro | date: 'dd/MM/yyyy'}}</p>
+                <span item-right>{{pay.pago | currency:'USD':true:'1.0-2'}}</span>
+            </ion-item>
+        </ion-list>
+    </ion-list>
+</ion-content>

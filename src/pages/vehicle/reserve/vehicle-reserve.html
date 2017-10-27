@@ -1,0 +1,59 @@
+<ion-header>
+    <ion-navbar color="red">
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title *ngIf="!showSearchBar" class="tracking-in-expand">Reservar</ion-title>
+        <ion-searchbar [(ngModel)]="search" placeholder="Buscar" *ngIf="showSearchBar" class="search-input" animated="true" autocomplete="on" autocorrect="on">
+        </ion-searchbar>
+        <ion-buttons end>
+            <button ion-button color="light" (click)="btnSearch()">
+                <ion-icon name="search"></ion-icon>
+            </button>
+            <button ion-button color="light" (click)="goToVehicleList()">
+                <ion-icon name="ios-car"></ion-icon>
+            </button>
+            <button ion-button color="light" (click)="goToProfile()">
+                <ion-icon name="person"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+<ion-content padding>
+    <div *ngIf="vehicle">
+        <div class="mrg-title">
+            <h2>¿Planeas un viaje?</h2>
+            <h4>Permítenos llevarte a tu destino</h4>
+        </div>
+        <ion-item>
+            <ion-label fixed>Viajo desde</ion-label>
+            <ion-input type="text" [readonly]="true" [value]="vehicle.sucursal + ' | ' + vehicle.sucursal_municipio"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>Voy hacia el mismo sitio</ion-label>
+            <ion-toggle [(ngModel)]="sameSite"></ion-toggle>
+        </ion-item>
+        <ion-item>
+            <ion-label>Viajo hacia</ion-label>
+            <ion-select cancelText="Nah" okText="Ok!" [disabled]="sameSite" [(ngModel)]="branch_destiny">
+                <ion-option *ngFor="let branch of branchs; let i = index; trackBy: trackByFn" value="{{branch.id}}" [selected]="i==0">{{branch.name}} | {{branch.municipio}}</ion-option>
+            </ion-select>
+        </ion-item>
+        <ion-item-divider></ion-item-divider>
+        <ion-item>
+            <ion-label>Viajo el</ion-label>
+            <ion-datetime displayFormat="DD MMM YYYY" [min]="dateInMin" max="2020-10-31" [(ngModel)]="dateIn" monthShortNames='Ene, Feb, Mar, Abr, May, Jun, Jul, Ago, Sep, Oct, Nov, Dic' doneText="Ok" cancelText="Cancelar" (ionChange)="verifyDates(dateIn, dateOut); sumdateout(dateIn,1)"></ion-datetime>
+        </ion-item>
+        <ion-item>
+            <ion-label>Llego el</ion-label>
+            <ion-datetime displayFormat="DD MMM YYYY"  [min]="dateOutMin" max="2020-10-31"  [(ngModel)]="dateOut" monthShortNames='Ene, Feb, Mar, Abr, May, Jun, Jul, Ago, Sep, Oct, Nov, Dic' doneText="Ok" cancelText="Cancelar"  (ionChange)="verifyDates(dateIn, dateOut)"></ion-datetime>
+        </ion-item>
+        <ion-item-divider></ion-item-divider>
+        <ion-item>
+            <ion-label>Necesito un conductor</ion-label>
+            <ion-toggle [(ngModel)]="driver"></ion-toggle>
+        </ion-item>
+        <ion-item-divider></ion-item-divider>
+    </div>
+    <button ion-button [disabled]="validate" full (click)="goConfirm(dateIn)">Rentar mi carro ahora</button>
+</ion-content>

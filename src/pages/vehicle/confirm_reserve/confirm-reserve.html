@@ -1,0 +1,65 @@
+<ion-header>
+    <ion-navbar color="red">
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title *ngIf="!showSearchBar" class="tracking-in-expand">Información</ion-title>
+        <ion-searchbar [(ngModel)]="search" placeholder="Buscar" *ngIf="showSearchBar" class="search-input" animated="true" autocomplete="on" autocorrect="on">
+        </ion-searchbar>
+        <ion-buttons end>
+            <button ion-button color="light" (click)="btnSearch()">
+                <ion-icon name="search"></ion-icon>
+            </button>
+            <button ion-button color="light" (click)="test('Reservar')">
+                <ion-icon name="ios-car"></ion-icon>
+            </button>
+            <button ion-button color="light" (click)="goToProfile()">
+                <ion-icon name="person"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-card>
+        <div class="vehicle-item__title">
+            <h2>{{vehicle.modelo}} {{vehicle.auto_nombre}} | <span class="bold"> {{vehicle.marca_nombre}} </span></h2>
+            <span class="subtitle">{{vehicle.puertas}} puertas | {{vehicle.puestos}} puestos</span>
+        </div>
+        <ion-slides>
+            <ion-slide>
+                <img src={{vehicle.foto_url}}>
+            </ion-slide>
+            <ion-slide *ngFor="let photos of vehicle.photos">
+                <img src={{photos}}>
+            </ion-slide>
+        </ion-slides>
+        <ion-fab class="favorite">
+            <button ion-fab (click)="favorite()">
+      <ion-icon [hidden]="favorito==1" name="star-outline"  ></ion-icon>
+      <ion-icon  [hidden]="favorito!=1" name="star"></ion-icon>
+    </button>
+        </ion-fab>
+        <ion-item>
+            <p class="">Ubicado en {{vehicle.sucursal}}, {{vehicle.sucursal_municipio}} {{vehicle.sucursal_departamento}}</p>
+            <p class="">Entregar en {{request.sucursal_entrega}}, el {{request.fecha_fin}}</p>
+        </ion-item>
+        <ion-item>
+            <ion-grid>
+                <ion-row>
+                    <ion-col *ngFor="let acce of vehicle.accessories">
+                        <ion-icon name="{{acce.icon}}" item-left large></ion-icon>
+                        {{acce.name}}
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-item>
+        <ion-item color="secondary">
+            <span class="bold">Confirmar </span>
+            <button ion-button icon-right item item-right clear color="light" (click)="confirm()">Confirmar  
+                <ion-icon name="arrow-forward"></ion-icon>
+            </button>
+        </ion-item>
+
+    </ion-card>
+</ion-content>
