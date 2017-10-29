@@ -7,7 +7,7 @@ declare let MqttClient: any;
 export class MQTTService {
 
     public _client: any;
-
+    public apikey;
     public _connected: boolean = false;
 
     public _prefix: string = 'application';
@@ -23,7 +23,6 @@ export class MQTTService {
      * @param callback
      */
     connect(callback?: Function): void {
-        console.log("yeah");
         if (typeof callback !== 'function') {
             callback = (err) => {
                 if (err) this.logger.log(`MQTTService::connect: ${err}`);
@@ -32,10 +31,10 @@ export class MQTTService {
 
         this._client = new MqttClient({
             
-            host: '192.168.43.162',
+            host: '172.27.15.124',
             port: 1883,
             username: '1000003',
-            password: '25bd95c4-484a-11e7-8835-0242ac110002',
+            password: this.apikey,
             will: {
                 topic: `${this._prefix}/status`,
                 payload: `offline`,

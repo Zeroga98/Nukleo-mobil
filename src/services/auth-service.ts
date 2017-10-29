@@ -50,7 +50,7 @@ export class AuthService {
   }
 
   public signUp(User) {
-    return this.apiService.post('/auth/signup', User)
+    return this.apiService.post('/signup', User)
     .map(
       data => {
         if(data.token){

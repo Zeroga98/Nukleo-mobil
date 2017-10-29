@@ -37,8 +37,6 @@ export class VehicleDetailPage {
     public authService: AuthService,
     private vehicleService: VehicleService
   ) {
-
-
     this.authService.isAuthenticated.subscribe((isAuthenticated) => {
       this.isAuthenticated = isAuthenticated;
     })
@@ -47,32 +45,17 @@ export class VehicleDetailPage {
     this.authService.currentUser.subscribe((userData) => {
       this.currentUser = userData
     })
-    
-
-
   }
 
   ionViewDidLoad() {
-    this.detail();
-    
+    this.detail(); 
   }
-/*  Change_Toggle() {
-  if(this.showSearchBar == true){
-       this.showSearchBar=false;
-        
-        console.log("ee");
-        
-   }
-   else{
-        console.log("uu");
-   }
-}*/
 
   public relay1PowerOnModel(value) {
     console.log(value);
     this.relay.powerOn = value;
 
-    this.mqtt.publish('25bd95c4-484a-11e7-8835-0242ac110002/1000003', value =='on'? '1' : '0', { retain: true, qos: 2 });
+    this.mqtt.publish('25bd95c4-484a-11e7-8835-0242ac110002/1000003', value =='open'? '1' : '0', { retain: true, qos: 2 });
   }
 
   public goToReserve(vehicle: any) {
@@ -90,7 +73,6 @@ export class VehicleDetailPage {
   }
 
   public detail() {
-    
     this.vehicleService.getDetaild(this.vehicle.id).subscribe(
       vehicle => {
        this.public=vehicle[0];

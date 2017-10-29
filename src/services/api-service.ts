@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Headers, Http, Response, URLSearchParams } from '@angular/http';
-import { ENV } from '@app/config';
 import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
@@ -12,7 +11,7 @@ import { Network } from '@ionic-native/network';
 @Injectable()
 export class ApiService {
 
-  private api_base_url = ENV.API_URL;
+  private api_base_url = "http://172.27.15.124:8000";
 	private wifi: boolean = true;
 
   constructor(
@@ -46,9 +45,6 @@ export class ApiService {
 		});
 	}
 
-
- 
-
   /** A futuro estas funciónes deberían ser parte de una Extensión personalizada de 
       la clase HTTP */
 		//disconnectSubscription.unsubscri
@@ -57,19 +53,18 @@ export class ApiService {
    * Interceptor para componer las cabeceras en cada petición
    * */
   private setHeaders(): Headers {
-    let headersConfig = {
-      'Content-Type': 'application/json'
-    };
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/x-www-form-urlencoded');
+
     if (this.tokenService.getToken()) {
-      headersConfig['Authorization'] = 'Bearer '+`${this.tokenService.getToken()}`;
+      headers.append('Authorization', 'Bearer '+`${this.tokenService.getToken()}`);
     }   
-    return new Headers(headersConfig);
+    return headers;
   }
 
   private formatErrors(error: any) {
      return Observable.throw(error.json());
   }
-
 
 /** Métodos Http que hacen peticiones a la api y retornan observables */
 
@@ -81,16 +76,20 @@ export class ApiService {
     .map((res:Response) => res.json());
   }
 
-  put(path: string, body: Object = {}): Observable<any> {
-    return this.http.put(`${this.api_base_url}${path}`, JSON.stringify(body),
+  put(path: string, body): Observable<any> {
+    return this.http.put(`${this.api_base_url}${path}`, body,
       { headers: this.setHeaders() }
     )
     .catch(this.formatErrors)
     .map((res:Response) => res.json());
   }
 
-  post(path: string, body: Object = {}): Observable<any> {
-    return this.http.post(`${this.api_base_url}${path}`, body,{ headers: this.setHeaders() }
+  post(path: string, body): Observable<any> {
+    let params = new URLSearchParams();
+    for(let key in body){
+        params.set(key, body[key]) 
+    }
+    return this.http.post(`${this.api_base_url}${path}`, params,{ headers: this.setHeaders() }
     )
     .catch(this.formatErrors)
     .map(res => {

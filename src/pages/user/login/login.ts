@@ -59,8 +59,9 @@ export class LoginPage {
       this.loading.dismiss();
     },
       error => {
-        if (error.message == "Contraseña incorrecta") {
-           this.util.presentToast(error.message);
+        console.log(error);
+        if (error.statusCode == 401) {
+           this.util.presentToast("El usuario es incorrecta");
         } else {
           this.util.presentToast(this.util.strings.error_connection);
 

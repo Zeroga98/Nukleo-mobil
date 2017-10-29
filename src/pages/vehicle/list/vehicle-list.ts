@@ -39,12 +39,11 @@ export class VehicleListPage {
     private util: UtilProvider,
     public modalCtrl: ModalController
   ) {
-    this.connect();
-    
-    this.authService.currentUser.subscribe((userData) => { 
+    this.authService.currentUser.subscribe((userData) => {
       this.currentUser = userData;
+      this.connect();
       console.log(this.currentUser);
-    })   
+    })
 
   }
 
@@ -168,30 +167,20 @@ export class VehicleListPage {
 
 
   public connect() {
-    console.log("entra");
-    this.mqtt.connect(err => {
-      if (err) return;
-
-      this.logger.log(`connect: MQTT connected`);
-
-      this.isConnected = true;
-
-      this.mqtt.subscribe('25bd95c4-484a-11e7-8835-0242ac110002/1000003', (topic: string, powerOn: string) => {
-
-        if (this.relay.powerOn !== (powerOn === '1')) {
-
-          this.relay.powerOn = powerOn === '1';
-        }
+    this.mqtt.apikey = this.currentUser.id;
+      this.mqtt.connect(err => {
+        if (err) return;
+        this.logger.log(`connect: MQTT connected`);
+        this.isConnected = true;
+        this.mqtt.subscribe(this.currentUser.id + '/1000003', (topic: string, powerOn: string) => {
+          if (this.relay.powerOn !== (powerOn === '1')) {
+            this.relay.powerOn = powerOn === '1';
+          }
+        });
       });
-    });
   }
 
-  
-
-
-
   public presentPrompt() {
-    console.log("hola");
     let alert = this.alertCtrl.create({
       title: 'Escribe el id que se encuentra detras del dispositivo',
       inputs: [
@@ -211,9 +200,7 @@ export class VehicleListPage {
         {
           text: 'Login',
           handler: data => {
-            console.log("hola");
-            let temp= {device:data.id,apikey:this.currentUser.id,latitude:'asdfdsf',longitude:'asdaf'};
-            console.log(temp);
+            let temp = { device: data.id, apikey: this.currentUser.id, latitude: 'asdfdsf', longitude: 'asdaf' };
             this.vehicleService.addDevice(temp).subscribe(
               vehicle => {
 
